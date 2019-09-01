@@ -17,11 +17,23 @@ class PostsController extends Controller
   }
 
   public function store() {
+    // Validate incoming data
     $data = request()->validate([
       'caption' => 'required',
       'image' => ['required', 'image']
     ]);
 
-    auth()->user()->posts()->create($data);
+    // Store image and get filepath
+    $imagePath = request('image')->store('uploads', 'public');
+
+    // Create post
+    auth()->user()->posts()->create([
+      'caption' => $data['caption'],
+      'image' => $imagePath
+    ]);
+
+    // Redirect user
+    return redirect('/profile/' . auth()->user()->id);
+
   }
 }
