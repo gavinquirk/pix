@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Intervention\Image\Facades\Image;
 use Illuminate\Http\Request;
 use App\User;
 
@@ -28,7 +29,21 @@ class ProfilesController extends Controller
       'image' => ''
     ]);
 
-    auth()->user()->profile->update($data);
+    if (request('image')) {
+      // Store image and get filepath
+      $imagePath = request('image')->store('profile', 'public');
+
+      // Change image size
+      $image = Image::make(public_path("storage/{$imagePath}"))->fit(1000, 1000);
+      $image->save();
+    }
+
+    auth()->user()->profile->update(array_merge(
+      $data,
+      ['image' => $imagePath]
+    ));
+
+
 
     return redirect("/profile/{$user->id}");
   }

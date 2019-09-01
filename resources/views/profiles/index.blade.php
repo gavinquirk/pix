@@ -4,9 +4,8 @@
 <div class="container">
 
   <div class="row">
-    <div class="col-3">
-      <img src="https://www.rawshorts.com/freeicons/wp-content/uploads/2017/01/media-pict-camera.png"
-        class="rounded-circle" style="width: 100%" alt="Logo">
+    <div class="col-3 p-5">
+      <img src="/storage/{{ $user->profile->image }}" class="rounded-circle w-100" alt="Logo">
     </div>
     <div class="col-9 pt-5">
       <div class="d-flex justify-content-between align-items-baseline">
