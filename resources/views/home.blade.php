@@ -19,10 +19,10 @@
         <div class="pr-5"><strong>212</strong> Following</div>
       </div>
       <div class="pt-4 font-weight-bold">
-        Pix.org
+        {{ $user->profile->title }}
       </div>
-      <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati distinctio ipsum placeat tempora consequatur deleniti blanditiis voluptates natus pariatur veritatis.</div>
-      <div><a href="#"></a>www.pix.org</div>
+      <div>{{ $user->profile->description }}</div>
+      <div><a href="#">{{ $user->profile->url }}</a></div>
     </div>
   </div>
 
