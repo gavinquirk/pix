@@ -37,9 +37,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    // Return Posts
+    // Return Posts, ordered
     public function posts() {
-      return $this->hasMany(Post::class);
+      return $this->hasMany(Post::class)->orderBy('created_at', 'DESC');
     }
 
     // Return Profile
