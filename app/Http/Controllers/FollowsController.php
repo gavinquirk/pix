@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class FollowsController extends Controller
 {
   public function __construct() {
-    $this->middware('auth');
+    $this->middleware('auth');
   }
 
 
@@ -16,4 +16,6 @@ class FollowsController extends Controller
     // Toggle follow
     return auth()->user()->following()->toggle($user->profile);
   }
+
+
 }
