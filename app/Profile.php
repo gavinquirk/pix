@@ -13,9 +13,11 @@ class Profile extends Model
   }
 
   public function profileImage() {
-    // $imagePath = ($this->image) ? $this->image : "profile/vPZXRpSXYyjnGJh0regnAwW6KGS9PVoNPvcqhhRd.png";
-
     $imagePath = ($this->image) ? $this->image : "profile/eCkItkASHarIbp83eotJzpGeiDszTtUkjHSBY3si.png";
     return '/storage/' . $imagePath;
+  }
+
+  public function followers() {
+    return $this->belongsToMany(User::class);
   }
 }
